@@ -1,0 +1,12 @@
+#Java ignores
+*.class
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+.classpath
+.settings/
+
+#Linux ignores
+*~
