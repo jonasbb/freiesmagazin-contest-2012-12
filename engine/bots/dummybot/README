@@ -1,0 +1,26 @@
+Wie kompiliere ich den Dummybot?
+-----------------------------------
+
+Einfach nur
+
+$ cd bots/dummybot
+$ make
+
+eingeben.
+
+
+Wie erstelle ich einen eigenen Bot auf Basis des Dummy-Bots?
+----------------------------------------------------------------
+
+Prinzipiell gar nicht, man erstellt nur eine neue Strategie. ;)
+
+
+Okay, wie erstelle ich eine eigene Strategie?
+------------------------------------------------
+
+Am einfachsten ist es, man passt die Dateien Strategy.hh/cpp und
+die zugehoerigen Daten in StrategyData.hh/cpp an. Die vorliegende
+Implementierung des Dummybot gibt ein paar Hinweise, wie das
+aussehen koennte.
+
+Mehr ist nicht zu tun! Danach natuerlich neu kompilieren (siehe oben).

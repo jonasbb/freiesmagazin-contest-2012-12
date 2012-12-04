@@ -1,0 +1,127 @@
+freiesMagazin-Programmierwettbewerb 12/2012
+================================================
+
+1) Engine erstellen
+-----------------------
+
+* C++-Compiler installieren
+
+* Archiv herunterladen:
+
+$ wget ftp://ftp.freiesmagazin.de/2012/freiesmagazin-2012-12-contest.tar.gz
+
+* Archiv entpacken:
+
+$ tar -xzf freiesmagazin-2012-12-contest.tar.gz
+
+* Kompilieren
+
+$ cd src
+$ make      # "make DEBUG=Y" für die Debug-Version
+$ cd ..
+
+* Dummy-Bot kompilieren:
+
+$ cd bots/dummybot
+$ make
+$ cd ../..
+
+
+2) Ein Spiel laufen lassen
+-----------------------------
+
+Einzelner Beispiellauf (ein Bot auf einem Feld):
+
+$ ./start.sh "fields/simple.txt" "bots/dummybot/bot"
+
+Anstelle "bots/dummybot" soll dann Euer Bot stehen. Im
+Verzeichnis "bots/dummybot" findet man eine README, die
+bei der Erstellung hilft (wenn man C++ und die Vorlage
+nutzen möchte).
+
+
+3) Logfile erstellen
+-------------------------
+
+Einzelner Beispiellauf (ein Bot auf einem Feld), wobei das Logfile
+gespeichert wird:
+
+$ ./start.sh "fields/simple.txt" "bots/dummybot/bot" --log |& tee bot.log
+
+Das Logfile "bot.log" kann dann mit der GUI angeschaut werden.
+
+
+4) GUI starten
+-----------------------------
+
+Siehe "gui/README" für genaue Informationen.
+
+
+5) Kompletten Wettbewerb laufen lassen
+------------------------------------------
+
+* Kompletter Wettbewerb (alle Bots auf einem Feld):
+
+$ ./start_contest.sh "fields/simple.txt" 1000
+
+
+6) Was muss der Bot können?
+--------------------------------
+
+Ziel des Spiels: Möglichst lange (viele Runden) über Wasser halten!
+
+* Befehle von STDIN lesen
+* Befehle an STDOUT ausgeben
+
+
+Kommandos vom Server an den Bot:
+
+GAMEBOARDSTART X,Y - Es wird ein neues Spielbrett mit X Spalten und Y
+                     Zeilen übertragen.
+...oo##oo#.. - So in der Art kann eine übertragene Zeile des Spielbretts
+               aussehen. Die Symbole bedeuten:
+                 . - Wasser / untergegangenes Feld
+                 o - geflutetes Feld
+                 # - Land / trockenes Feld
+               Es werden Y Zeilen übertragen und jede Zeile enthält
+               X Zeichen.
+GAMEBOARDEND - Die Spielbrettuebertragung ist zu Ende.
+
+ROUND Z X,Y - Runde Z beginnt. Der Bot steht aktuell auf Feld (X,Y).
+              Das Spielbrett beginnt links oben bei (1,1).
+              Nach diesem Befehl erwartet der Server exakt drei
+              Kommandos mit GO/DRY (siehe unten).
+
+FLOOD X,Y - Das Feld (X,Y) wird geflutet. War es noch trocken, ist es
+            nun überfluetet. War es schon überflutet, ist es nun
+            untergegangen.
+            Das Spielbrett beginnt links oben bei (1,1).
+INCRFLOOD Z - Die Flut steigt um ein Level Z an, d.h. es werden Z mehr
+              Felder als vorher überflutet. Z darf auch 0 sein.
+
+END - Das Spiel ist zu Ende.
+
+
+Kommandos vom Bot an den Server:
+
+GO ... - Der Bot geht ein Feld in eine bestimmte Richtung. Erlaubte
+         Richtungen sind:
+           NORTH - Der Bot geht ein Feld nach oben.
+           EAST - Der Bot geht ein Feld nach rechts.
+           SOUTH - Der Bot geht ein Feld nach unten.
+           WEST - Der Bot geht ein Feld nach links.
+           CURRENT - Der Bot bleibt auf dem aktuellen Feld stehen.
+DRY ... - Der Bot legt ein überflutetes Feld in einer bestimmten
+          Richtung trocken. Erlaubte Richtungen sind:
+            NORTH - Der Bot legt das Feld oberhalb von ihm trocken.
+            EAST - Der Bot legt das Feld rechts von ihm trocken.
+            SOUTH - Der Bot das Feld unterhalb von ihm trocken.
+            WEST - Der Bot legt das Feld links von ihm trocken.
+            CURRENT - Der Bot legt das Feld trocken, auf dem er steht.
+          War das aktuelle Feld überflutet, ist es nun wieder trocken.
+
+Die Beispielkommunikation für eine Runde (empfangen und senden)
+kann unter doc/diagrams/Server-Bot-Kommunikation.png angeschaut werden.
+
+Die Änderung der Feldstati kann unter doc/diagrams/Tile-States.png
+angeschaut werden.

@@ -1,0 +1,23 @@
+CHANGELOG freiesMagazin-Programmierwettbewerb 12/2012
+==========================================================
+
+= 03.12.2012 =
+
+* Bugfix: Der Bot darf in der Datei "start.sh" natürlich nicht in
+    Anführungszeichen stehen, da sonst Argumente mit zur ausgeführten
+    Datei zählen.
+
+= 02.12.2012 =
+
+* Bugfix: Ein Bot konnte sich auf ein untergegangenes Feld bewegen und
+    danach weitere Kommandos ausfuehren. Es war damit moeglich,
+    "uebers Wasser zu laufen".
+    Daneben konnte man ein untergegangenes Feld auch trocken
+    legen, was ebenfalls nicht moeglich sein sollte. Der Fehler
+    fuehrte zu einem Endlosprogramm, da das untergegangene Felder nicht
+    mehr zur Auswahl beim Ueberfluten stand.
+
+= 01.12.2012 =
+
+* Initialversion
+

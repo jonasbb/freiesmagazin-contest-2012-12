@@ -10,3 +10,7 @@ tmp/**/*
 
 #Linux ignores
 *~
+
+
+#Ignore every change on the engine side
+engine/

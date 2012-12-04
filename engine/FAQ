@@ -1,0 +1,64 @@
+Häufig gestellte Fragen (FAQ)
+=================================
+
+----------------------------------------------------------------------
+Wenn ich das start-Skript ausführe, erhalte ich keine Rückmeldung 
+und das Programm bleibt stehen. Was mache ich falsch?
+----------------------------------------------------------------------
+
+In der Regel wartet der Server dann auf die Antwort eines Bots. Das 
+Debugging der Engine hilft ebenfalls bei der Analyse (siehe unten).
+
+Bekannte Probleme bei der Implementierung eines eigenen Bots können 
+sein:
+
+1. Nach dem Schreiben auf stdout fehlt das Flushen der Daten. Das 
+ist bei manchen Sprachen notwendig, damit auch wirklich gesendet 
+wird.
+   
+2. Das Auslesen der Daten muss zeilenweise passieren. Versucht man 
+mehr Daten zu lesen oder zeichenweise, kann dies zu einer Problem 
+führen.
+
+----------------------------------------------------------------------
+Wie aktiviere ich den Debug-Modus der Engine?
+----------------------------------------------------------------------
+
+In manchen Fällen kann es hilfreichen sein, zu schauen, was die
+Engine tut bzw. ob sie auf etwas wartet. Dazu einfach:
+
+$ cd src
+$ make clean
+$ make DEBUG=Y
+$ cd ..
+
+----------------------------------------------------------------------
+Wenn die Karten und Felder zufällig gezogen werden, ist das noch fair?
+----------------------------------------------------------------------
+
+Wenn man nur ein Spiel spielen würde, wäre es wohl unfair. Wenn man
+aber jeden Bot auf jedem Feld 1000 Mal (oder mehr) iteriert, ergibt
+sich ein recht zuverlässiger Durchschnittswert.
+
+----------------------------------------------------------------------
+Spielt der Dummybot später mit im Wettbewerb?
+----------------------------------------------------------------------
+
+Nein, der Dummybot ist nur als Beispiel zu verstehen, wer seinen
+Bot in C++ programmieren und diesen als Vorlage benutzen möchte.
+
+----------------------------------------------------------------------
+Werde ich disqualifiziert, wenn mein Bot zu lange braucht?
+----------------------------------------------------------------------
+
+Die Berechnungszeit einer Runde, d.h. der drei Bot-Aktionen, sollte
+nur ein oder zwei Sekunden brauchen. Wer pro Aktion eine Minute
+Rechenzeit benötigt, muss aber definitiv nachbessern.
+
+----------------------------------------------------------------------
+Werden nach beendetem Wettbewerb eigentlich die Quellcodes aller Bots
+veröffentlicht?
+----------------------------------------------------------------------
+
+Ja, wie die Jahre zuvor veröffentlichen wir die Bots nach dem Ende 
+des Wettbewerbs.

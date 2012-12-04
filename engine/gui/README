@@ -1,0 +1,59 @@
+Benötigte Bibliotheken
+-------------------------
+
+Zuerst die Engine erstellen (siehe "README" im Hauptverzeichnis).
+
+Zum Kompilieren wird Qt4 benötigt:
+
+ * g++
+ * libqt4-dev
+ * qt4-qmake
+
+Danach:
+
+$ qmake && make
+
+Für eine Debug-Version muss in der Datei "gui.pro" die Zeile
+
+  QMAKE_CXXFLAGS_DEBUG -= -DDEBUG
+
+durch
+
+  QMAKE_CXXFLAGS_DEBUG *= -DDEBUG
+
+ersetzt werden.
+
+
+GUI starten
+-------------------------
+
+$ ./gui
+
+Nach dem Start kann man ein zuvor über
+
+$ ./start.sh "fields/simple.txt" "bots/dummybot/bot" --log |& tee bot.log
+
+erstelltes Logfile öffnen.
+
+
+GUI bedienen
+-------------------------
+
+Nach dem Laden kann man über die Knöpfe den Ablauf steuern.
+
+"Start" – Spiel wird fortgesetzt – oder neu gestartet, wenn man am
+          Ende steht.
+
+"Stop" – Spiel wird im Ablauf angehalten.
+
+"Go to line" – Spingt zur aktuell ausgewählten Zeile im Editor. Auf die
+               Art kann man bei der Fehlersuche gezielt an eine
+               bestimmte Stelle springen.
+
+"Single step" – Ist der Einzelschritt aktiviert, arbeitet ein Start nur
+                die aktuelle Zeile ab. Der Einzelschritt wirkt nicht
+                auf "Go to line".
+
+"Reset" – Setzt die Abarbeitung auf den Anfang zurück.
+
+Im Menü gibt es noch den Punkt "Quit", um das Spiel zu beenden.
