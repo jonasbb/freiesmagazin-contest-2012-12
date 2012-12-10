@@ -4,16 +4,7 @@ public class Size {
 	private int width;
 	private int height;
 
-	public Size (int width, int height) {
-		if (width > 0 && height > 0) {
-			setWidth (width);
-			setHeight (height);
-		} else {
-			throw new IllegalArgumentException ("Arguments has to be greater than 0!");
-		}
-	}
-	
-	public Size (String s) {
+	public Size (int width, int height) throws IllegalArgumentException {
 		if (width > 0 && height > 0) {
 			setWidth (width);
 			setHeight (height);
@@ -30,7 +21,7 @@ public class Size {
 		return height;
 	}
 
-	public void setHeight (int height) {
+	public void setHeight (int height) throws IllegalArgumentException {
 		if (height > 0) {
 			this.height = height;
 		} else {
@@ -42,7 +33,7 @@ public class Size {
 		return width;
 	}
 
-	public void setWidth (int width) {
+	public void setWidth (int width) throws IllegalArgumentException {
 		if (width > 0) {
 			this.width = width;
 		} else {

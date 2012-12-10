@@ -14,7 +14,7 @@ public class World<G> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public World (String s) {
+	public World (String s) throws IllegalArgumentException {
 		String[] statements = s.split(System.getProperty("line.separator"));
 		
 		// first line form of
@@ -49,7 +49,7 @@ public class World<G> {
 		return size;
 	}
 	
-	public G getField (Position p) {
+	public G getField (Position p) throws IllegalArgumentException {
 		if (size.isPositionValid(p)) {
 			return map [p.getX()-1][p.getY()-1];
 		} else {
@@ -57,7 +57,7 @@ public class World<G> {
 		}
 	}
 	
-	public void setField (Position p, G value) {
+	public void setField (Position p, G value) throws IllegalArgumentException {
 		if (size.isPositionValid(p)) {
 			map [p.getX()-1][p.getY()-1] = value;
 		} else {
